@@ -1,0 +1,93 @@
+const menu = [
+  {
+    id: 1,
+    name: "Butter Naan",
+    price: 12.99,
+    imgUrl: "../../assets/img/food/butter-naan.png",
+  },
+  {
+    id: 2,
+    name: "Chicken Fry",
+    price: 32.99,
+    imgUrl: "../../assets/img/food/chicken-fry.png",
+  },
+  {
+    id: 3,
+    name: "Chicken Curry",
+    price: 28.99,
+    imgUrl: "../../assets/img/food/chicken-gravy.png",
+  },
+  { id: 4, name: "Dal", price: 5.99, imgUrl: "../../assets/img/food/dal.png" },
+  {
+    id: 5,
+    name: "Dosa",
+    price: 15.99,
+    imgUrl: "../../assets/img/food/dosa.png",
+  },
+  {
+    id: 6,
+    name: "Hyderabad Dum Biryani",
+    price: 55.99,
+    imgUrl: "../../assets/img/food/hyd-dum-bir.png",
+  },
+  {
+    id: 7,
+    name: "Idly",
+    price: 1.99,
+    imgUrl: "../../assets/img/food/idli.png",
+  },
+  {
+    id: 8,
+    name: "Malabar Parotta",
+    price: 3.99,
+    imgUrl: "../../assets/img/food/malbar-parotta.png",
+  },
+  {
+    id: 9,
+    name: "Mutton Fry",
+    price: 18.99,
+    imgUrl: "../../assets/img/food/mutton-fry.png",
+  },
+  {
+    id: 10,
+    name: "Nool Parotta",
+    price: 4.99,
+    imgUrl: "../../assets/img/food/nool-parotta.png",
+  },
+  {
+    id: 11,
+    name: "North Indian Meal",
+    price: 32.99,
+    imgUrl: "../../assets/img/food/north-indian-meal.png",
+  },
+  {
+    id: 12,
+    name: "Rice",
+    price: 10.99,
+    imgUrl: "../../assets/img/food/rice.png",
+  },
+  {
+    id: 13,
+    name: "Roti",
+    price: 1.99,
+    imgUrl: "../../assets/img/food/roti.png",
+  },
+  {
+    id: 14,
+    name: "South Indian Meal",
+    price: 27.99,
+    imgUrl: "../../assets/img/food/south-indian-meal.png",
+  },
+  {
+    id: 15,
+    name: "Tandoori",
+    price: 40.99,
+    imgUrl: "../../assets/img/food/tandoor.png",
+  },
+  {
+    id: 16,
+    name: "Upma",
+    price: 8.99,
+    imgUrl: "../../assets/img/food/upma.png",
+  },
+];
