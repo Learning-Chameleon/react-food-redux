@@ -1,14 +1,15 @@
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../contexts/AppContext";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
+import { setUser } from "./userSlice";
 export function Login() {
-  const [state, dispatch] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    dispatch({ type: "SET_USER", payload: { name: "Hari" } });
+    dispatch(setUser({ name: "Hari" }));
     navigate("/");
   };
 
@@ -23,7 +24,7 @@ export function Login() {
         height: "100vh",
       }}
     >
-      <h1 style={{ color: state?.brandColor }}>Login Page</h1>
+      <h1 style={{ color: theme?.brandColor }}>Login Page</h1>
       <Input label="Username" />
       <Input label="Password" type="password" />
       <Button label="Submit" onClick={handleLogin} />

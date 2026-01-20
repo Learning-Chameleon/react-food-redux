@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useSelector } from "react-redux";
 
 export function Footer() {
-  const [state] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
+  console.log(theme);
   return (
     <footer
       style={{
@@ -10,8 +10,8 @@ export function Footer() {
         padding: "1rem",
         marginTop: "2rem",
         borderTop: "1px solid #ccc",
-        backgroundColor: state?.background,
-        color: state?.color,
+        backgroundColor: theme?.background,
+        color: theme?.color,
       }}
     >
       <p>© 2024 React Food Redux. All rights reserved.</p>

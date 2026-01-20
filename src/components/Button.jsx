@@ -1,22 +1,22 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useSelector } from "react-redux";
+
 export function Button({ label, onClick }) {
-  const [state] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
+  const handleClick = typeof onClick === "function" ? onClick : () => {};
   return (
     <button
       style={{
         padding: "5px",
         minWidth: "100px",
-        background: state.brandColor,
+        background: theme?.brandColor,
         borderRadius: "4px",
         color: "#fff",
         border: "none",
         cursor: "pointer",
       }}
-      onClick={onClick}
+      onClick={handleClick}
     >
-      {" "}
-      {label}{" "}
+      {label}
     </button>
   );
 }
