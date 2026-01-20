@@ -1,17 +1,17 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "./Button";
+import { removeFromCart } from "./cartSlice";
 
 export function Cart() {
-  const [state, dispatch] = useContext(AppContext);
+  const cart = useSelector((state) => state.cart);
+  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
   return (
     <>
-      {state?.cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
+      {cart?.length > 0 && (
         <div style={{ padding: "20px", width: "300px" }}>
           <h2>Your Cart 🛒</h2>
-          {state?.cart.map((item, index) => (
+          {cart?.map((item, index) => (
             <div
               key={index}
               style={{
@@ -20,8 +20,8 @@ export function Cart() {
                 margin: "10px 0",
                 display: "flex",
                 gap: "10px",
-                backgroundColor: state?.background,
-                color: state?.color,
+                backgroundColor: theme?.background,
+                color: theme?.color,
               }}
             >
               <div>
@@ -48,9 +48,9 @@ export function Cart() {
                 </p>
                 <Button
                   label={"Remove"}
-                  onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_CART", payload: item })
-                  }
+                  onClick={() => {
+                    dispatch(removeFromCart(item));
+                  }}
                 />
               </div>
             </div>
@@ -66,9 +66,9 @@ export function Cart() {
             }}
           >
             Total: ₹
-            {state?.cart.reduce(
+            {cart?.reduce(
               (total, item) => total + item.price * item.quantity,
-              0
+              0,
             )}
           </div>
         </div>

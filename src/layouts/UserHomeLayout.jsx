@@ -1,12 +1,11 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 import { Cart } from "../components/Cart";
 import { Footer } from "../components/Footer";
-import { AppContext } from "../contexts/AppContext";
 import { Navbar } from "../pages/navbar/Navbar";
-import { Outlet } from "react-router-dom";
 
 export function UserHomeLayout() {
-  const [state] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
   return (
     <div
       style={{
@@ -14,7 +13,7 @@ export function UserHomeLayout() {
         flexDirection: "column",
         minHeight: "100vh",
         backgroundColor:
-          state?.theme === "light" ? "#f9f9f9" : state?.brandColor,
+          theme?.theme === "light" ? "#f9f9f9" : theme?.brandColor,
       }}
     >
       <Navbar />

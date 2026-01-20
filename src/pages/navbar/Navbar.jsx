@@ -1,8 +1,12 @@
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { clearUser } from "../login/userSlice";
+import { updateTheme } from "./navbarSlice";
 export function Navbar() {
-  const [state, dispatch] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
+  const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   return (
     <nav
@@ -12,13 +16,13 @@ export function Navbar() {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        background: `${state?.background}`,
-        color: `${state?.color}`,
+        backgroundColor: theme?.background,
+        color: theme?.color,
       }}
     >
       <div>🥕 Logo</div>
       <ul style={{ display: "flex", listStyle: "none" }}>
-        {Object.entries(state?.menu).map(([key, value]) => (
+        {Object.entries(theme?.menu).map(([key, value]) => (
           <li
             style={{
               padding: "0px 10px",
@@ -30,7 +34,7 @@ export function Navbar() {
               to={key}
               style={({ isActive }) => ({
                 textDecoration: "none",
-                color: isActive ? state?.brandColor : state?.color,
+                color: isActive ? theme?.brandColor : theme?.color,
                 fontWeight: isActive ? "bold" : "normal",
               })}
             >
@@ -41,22 +45,18 @@ export function Navbar() {
       </ul>
       <div>
         Hello{" "}
-        <span style={{ color: state?.brandColor }}>
-          {state?.user?.name ?? "User"}
-        </span>
+        <span style={{ color: theme?.brandColor }}>{user?.name ?? "User"}</span>
         <span
+          onClick={() => dispatch(clearUser())}
           style={{ cursor: "pointer" }}
-          onClick={() => dispatch({ type: "LOGOUT" })}
           title="Signout"
         >
           ,&nbsp; 🏃‍♂️&nbsp;
         </span>
         <select
           style={{ padding: "5px" }}
-          value={state?.theme}
-          onChange={(e) =>
-            dispatch({ type: "SET_THEME", payload: e.target.value })
-          }
+          value={theme?.theme}
+          onChange={(e) => dispatch(updateTheme(e.target.value))}
         >
           <option value="light">☀️ </option>
           <option value="dark">🌙</option>

@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useSelector } from "react-redux";
 import { Button } from "./Button";
 
 export function Card({ name, price, imageUrl, onClick }) {
-  const [state] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
   return (
     <div
       style={{
@@ -13,8 +12,8 @@ export function Card({ name, price, imageUrl, onClick }) {
         display: "inline-block",
         borderRadius: "8px",
         textAlign: "center",
-        backgroundColor: state?.background,
-        color: state?.color,
+        backgroundColor: theme?.background,
+        color: theme?.color,
       }}
     >
       <img

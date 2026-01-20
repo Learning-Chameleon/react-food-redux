@@ -1,14 +1,14 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useSelector } from "react-redux";
+
 export function NotFound() {
-  const [state] = useContext(AppContext);
+  const theme = useSelector((state) => state.theme);
   return (
     <h1
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        color: state.brandColor,
+        color: theme.brandColor,
         height: "80vh",
       }}
     >
